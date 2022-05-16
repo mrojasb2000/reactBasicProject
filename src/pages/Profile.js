@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import Link from '../components/Link';
+import './Profile.css';
 
 function Profile({ userName }) {
     const [loading, setLoading] = useState(false);
@@ -19,43 +21,48 @@ function Profile({ userName }) {
 
     return (
         <div>
+            <div className='Profile-container'>
             <h2>About me</h2>
             {loading ? (<span>Loading...</span>): (
-                <ul>
-                    <li>
-                        <span>avatar_url: </span>
-                        {profile.avatar_url}
-                    </li>
-                    <li>
-                        <span>html_url: </span>
-                        {profile.html_url}
-                    </li>
-                    <li>
-                        <span>repos_url: </span>
-                        {profile.repos_url}
-                    </li>
-                    <li>
-                        <span>name: </span>
-                        {profile.name}
-                    </li>
-                    <li>
-                        <span>comapny: </span>
-                        {profile.comapny}
-                    </li>
-                    <li>
-                        <span>location: </span>
-                        {profile.location}
-                    </li>
-                    <li>
-                        <span>email: </span>
-                        {profile.email}
-                    </li>
-                    <li>
-                        <span>bio: </span>
-                        {profile.bio}
-                    </li>
-                </ul>
+                <div>
+                    <img 
+                        className='Profile-avatar' 
+                        src={profile.avatar_url} 
+                        alt={profile.name} 
+                    />
+                    <ul>
+                        <li>
+                            <span>html_url: </span>
+                            <Link url={profile.html_url} title={profile.html_url} />
+                        </li>
+                        <li>
+                            <span>repos_url: </span>
+                            <Link url={profile.repos_url} title={profile.repos_url} />
+                        </li>
+                        <li>
+                            <span>name: </span>
+                            {profile.name}
+                        </li>
+                        <li>
+                            <span>comapny: </span>
+                            {profile.comapny}
+                        </li>
+                        <li>
+                            <span>location: </span>
+                            {profile.location}
+                        </li>
+                        <li>
+                            <span>email: </span>
+                            {profile.email}
+                        </li>
+                        <li>
+                            <span>bio: </span>
+                            {profile.bio}
+                        </li>
+                    </ul>
+                </div>
             )}
+            </div>
         </div>
     );
 }
