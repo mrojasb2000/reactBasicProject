@@ -10,7 +10,6 @@ function Profile({ userName }) {
             const profile = await fetch(url);
             const result = await profile.json();
             if (result) {
-                console.log('result: ', result);
                 setProfile(result);
                 setLoading(false);
             }
@@ -21,7 +20,42 @@ function Profile({ userName }) {
     return (
         <div>
             <h2>About me</h2>
-            {loading ? (<span>Loading...</span>): (<ul></ul>)}
+            {loading ? (<span>Loading...</span>): (
+                <ul>
+                    <li>
+                        <span>avatar_url: </span>
+                        {profile.avatar_url}
+                    </li>
+                    <li>
+                        <span>html_url: </span>
+                        {profile.html_url}
+                    </li>
+                    <li>
+                        <span>repos_url: </span>
+                        {profile.repos_url}
+                    </li>
+                    <li>
+                        <span>name: </span>
+                        {profile.name}
+                    </li>
+                    <li>
+                        <span>comapny: </span>
+                        {profile.comapny}
+                    </li>
+                    <li>
+                        <span>location: </span>
+                        {profile.location}
+                    </li>
+                    <li>
+                        <span>email: </span>
+                        {profile.email}
+                    </li>
+                    <li>
+                        <span>bio: </span>
+                        {profile.bio}
+                    </li>
+                </ul>
+            )}
         </div>
     );
 }
