@@ -1,3 +1,5 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Profile from './pages/Profile';
 import logo from './assets/logo.svg';
@@ -6,8 +8,12 @@ import './App.css';
 function App() {
   return (
     <div className="App">
+      <BrowserRouter>
       <Header logo={logo} />
-      <Profile userName='octocat' />
+      <Routes>
+        <Route path='/' element={<Profile userName='octocat' />} />
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
